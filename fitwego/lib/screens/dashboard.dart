@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-
+import '../screens/mobile_scanner.dart';
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -482,7 +481,28 @@ class QuickAddSheet extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             children: [
               GestureDetector(onTap:(){Navigator.pop(context);Navigator.push(context,MaterialPageRoute(builder:(_)=>const LogFoodPage()));},child:addBox(Icons.search, "Log Food", Colors.blue)),
-              addBox(Icons.qr_code_scanner, "Barcode Scan", Colors.red),
+              GestureDetector(
+  onTap: () async {
+    Navigator.pop(context);
+
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const BarcodeScannerPage(),
+      ),
+    );
+
+    if (result != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              "${result['name']} - ${result['calories']}"),
+        ),
+      );
+    }
+  },
+  child: addBox(Icons.qr_code_scanner, "Barcode Scan", Colors.red),
+),
               addBox(Icons.mic, "Voice Log", Colors.purple),
               addBox(Icons.camera_alt, "Meal Scan", Colors.teal),
             ],
@@ -582,7 +602,29 @@ class _LogFoodPageState extends State<LogFoodPage> {
        children:[
         Expanded(child:_foodAction(Icons.mic,'Voice Log')),
         const SizedBox(width:12),
-        Expanded(child:_foodAction(Icons.qr_code_scanner,'Scan a Barcode')),
+        Expanded(
+  child: GestureDetector(
+    onTap: () async {
+      final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const BarcodeScannerPage(),
+        ),
+      );
+
+      if (result != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              "${result['name']} - ${result['calories']}",
+            ),
+          ),
+        );
+      }
+    },
+    child: _foodAction(Icons.qr_code_scanner, 'Scan a Barcode'),
+  ),
+),
        ],
       ),
       const SizedBox(height:28),
@@ -719,4 +761,3 @@ class _Stat extends StatelessWidget {
     );
   }
 }
-
