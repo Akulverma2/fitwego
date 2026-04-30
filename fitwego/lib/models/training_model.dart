@@ -190,6 +190,40 @@ class InteractionButtonConfig {
   const InteractionButtonConfig({required this.icon, required this.label, required this.color});
 }
 
+class DiscoveryTrainer {
+  final String id;
+  final String name;
+  final String imageUrl;
+  final String gymName;
+  final String specialty;
+  final int experienceYears;
+  final double rating;
+  final String tagline;
+  final bool isPremium;
+  final List<String> certifications;
+  final List<String> achievements;
+  final List<String> programsCreated;
+  final List<String> servicesOffered;
+  final int reviewsCount;
+
+  const DiscoveryTrainer({
+    required this.id,
+    required this.name,
+    required this.imageUrl,
+    required this.gymName,
+    required this.specialty,
+    required this.experienceYears,
+    required this.rating,
+    required this.tagline,
+    this.isPremium = false,
+    this.certifications = const [],
+    this.achievements = const [],
+    this.programsCreated = const [],
+    this.servicesOffered = const [],
+    this.reviewsCount = 0,
+  });
+}
+
 // ── Demo Data ─────────────────────────────────────────────────────────────────
 
 class TrainingDemoData {
@@ -313,5 +347,91 @@ class TrainingDemoData {
     WellnessItem(title: 'Box Breathing', emoji: '🌬️', duration: '5 min', type: WellnessType.breathing, description: 'Inhale 4s → Hold 4s → Exhale 4s → Hold 4s\nRepeat for 5 minutes.\nCalms the nervous system.'),
     WellnessItem(title: 'Focus Meditation', emoji: '🧠', duration: '10 min', type: WellnessType.meditation, description: 'Close your eyes. Focus on your breath.\nLet thoughts pass like clouds.\n10 minutes of stillness.'),
     WellnessItem(title: 'Foam Roll Recovery', emoji: '🧊', duration: '15 min', type: WellnessType.recovery, description: 'Quads: 2 min each\nHamstrings: 2 min each\nBack: 3 min\nCalves: 2 min each'),
+  ];
+
+  static const List<DiscoveryTrainer> myCommunityTrainers = [
+    DiscoveryTrainer(
+      id: 'dc1',
+      name: 'Aryan Kapoor',
+      imageUrl: 'https://i.pravatar.cc/150?img=12',
+      gymName: 'FitWeGo Premier Gym',
+      specialty: 'Strength & Conditioning',
+      experienceYears: 7,
+      rating: 4.9,
+      tagline: 'Helping 100+ clients lift heavier and live better.',
+      isPremium: true,
+      reviewsCount: 142,
+      achievements: ['Top Trainer 2023', 'NSCA Certified', '100+ Transformations'],
+      certifications: ['CSCS (NSCA)', 'ACE Personal Trainer', 'Precision Nutrition L1'],
+      programsCreated: ['Power Push-Pull (8 Weeks)', 'Leg Hypertrophy (4 Weeks)'],
+      servicesOffered: ['Personal Training', 'Online Coaching', 'Diet Plans'],
+    ),
+    DiscoveryTrainer(
+      id: 'dc2',
+      name: 'Priya Sharma',
+      imageUrl: 'https://i.pravatar.cc/150?img=5',
+      gymName: 'FitWeGo Premier Gym',
+      specialty: 'Yoga & Mobility',
+      experienceYears: 5,
+      rating: 4.8,
+      tagline: 'Find your balance and breathe through the pain.',
+      isPremium: true,
+      reviewsCount: 89,
+      achievements: ['RYT-500 Certified', '500-hr Training'],
+      certifications: ['RYT-500', 'Prenatal Yoga', 'Mindfulness Coach'],
+      programsCreated: ['Morning Flow Series', 'Flexibility & Recovery'],
+      servicesOffered: ['Yoga Sessions', 'Mobility Workshops', 'Meditation'],
+    ),
+  ];
+
+  static const List<DiscoveryTrainer> exploreTrainers = [
+    DiscoveryTrainer(
+      id: 'ex1',
+      name: 'Marcus Bell',
+      imageUrl: 'https://i.pravatar.cc/150?img=11',
+      gymName: 'PowerZone Gym',
+      specialty: 'HIIT & Cardio',
+      experienceYears: 6,
+      rating: 4.7,
+      tagline: 'Burn fat fast and build endurance.',
+      isPremium: false,
+      reviewsCount: 201,
+      achievements: ['Top HIIT Coach', '50kg Weight Loss Records'],
+      certifications: ['ACE Certified', 'TRX Pro'],
+      programsCreated: ['30-Day Shred', 'Cardio Blast'],
+      servicesOffered: ['HIIT Classes', 'Online Coaching'],
+    ),
+    DiscoveryTrainer(
+      id: 'ex2',
+      name: 'Emma Davis',
+      imageUrl: 'https://i.pravatar.cc/150?img=9',
+      gymName: 'Zen Fitness Studio',
+      specialty: 'Pilates',
+      experienceYears: 9,
+      rating: 4.9,
+      tagline: 'Core strength and posture improvement specialist.',
+      isPremium: false,
+      reviewsCount: 310,
+      achievements: ['Pilates Alliance Certified', 'Rehab Expert'],
+      certifications: ['NPCP', 'Balanced Body Instructor'],
+      programsCreated: ['Core Foundation', 'Post-Rehab Pilates'],
+      servicesOffered: ['Pilates Sessions', 'Posture Assessment'],
+    ),
+    DiscoveryTrainer(
+      id: 'ex3',
+      name: 'Rohan Mehta',
+      imageUrl: 'https://i.pravatar.cc/150?img=8',
+      gymName: 'Iron Core Athletics',
+      specialty: 'Fat Loss & Diet',
+      experienceYears: 4,
+      rating: 4.6,
+      tagline: 'Transforming bodies with sustainable diets.',
+      isPremium: false,
+      reviewsCount: 56,
+      achievements: ['100+ Diet Plans Crafted'],
+      certifications: ['Certified Nutritionist'],
+      programsCreated: ['Keto Starter', 'Sustainable Fat Loss'],
+      servicesOffered: ['Diet Planning', 'Online Coaching'],
+    ),
   ];
 }
